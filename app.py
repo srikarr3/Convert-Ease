@@ -6,10 +6,10 @@ from PIL import Image
 from pdf2image import convert_from_path
 import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"your file path"
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"
+
 
 # Create a folder for converted files if it doesn't exist.
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static', 'converted')
@@ -58,7 +58,7 @@ def convert_pdf_to_jpg(file_stream, filename):
     try:
         temp_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(filename))
         file_stream.save(temp_pdf_path)
-        poppler_path = r"C:\Users\manda\Downloads\Release-24.08.0-0\poppler-24.08.0\Library\bin"
+        poppler_path = r"your file path"
         images = convert_from_path(temp_pdf_path, poppler_path=poppler_path)
         output_files = []
         for i, image in enumerate(images):
@@ -78,7 +78,7 @@ def ppt_to_pdf(file_stream, filename):
         temp_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(filename))
         file_stream.save(temp_path)
         out_dir = app.config['UPLOAD_FOLDER']
-        libreoffice_path = r"C:\Program Files\LibreOffice\program\soffice.exe"
+        libreoffice_path = r"your file path"
         command = [libreoffice_path, "--headless", "--convert-to", "pdf", "--outdir", out_dir, temp_path]
         subprocess.run(command, check=True)
         out_filename = secure_filename(filename.rsplit('.', 1)[0] + ".pdf")
@@ -93,7 +93,7 @@ def word_to_pdf(file_stream, filename):
         temp_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(filename))
         file_stream.save(temp_path)
         out_dir = app.config['UPLOAD_FOLDER']
-        libreoffice_path = r"C:\Program Files\LibreOffice\program\soffice.exe"
+        libreoffice_path = r"your file path"
         command = [libreoffice_path, "--headless", "--convert-to", "pdf", "--outdir", out_dir, temp_path]
         subprocess.run(command, check=True)
         out_filename = secure_filename(filename.rsplit('.', 1)[0] + ".pdf")
@@ -108,7 +108,7 @@ def excel_to_pdf(file_stream, filename):
         temp_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(filename))
         file_stream.save(temp_path)
         out_dir = app.config['UPLOAD_FOLDER']
-        libreoffice_path = r"C:\Program Files\LibreOffice\program\soffice.exe"
+        libreoffice_path = r"your file path"
         command = [libreoffice_path, "--headless", "--convert-to", "pdf", "--outdir", out_dir, temp_path]
         subprocess.run(command, check=True)
         out_filename = secure_filename(filename.rsplit('.', 1)[0] + ".pdf")
@@ -122,7 +122,7 @@ def pdf_ocr(file_stream, filename):
     try:
         temp_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(filename))
         file_stream.save(temp_pdf_path)
-        poppler_path = r"C:\Users\manda\Downloads\Release-24.08.0-0\poppler-24.08.0\Library\bin"
+        poppler_path = r"your file path"
         images = convert_from_path(temp_pdf_path, poppler_path=poppler_path)
         ocr_text = ""
         for i, image in enumerate(images):
@@ -160,7 +160,7 @@ def pdf_to_ppt(file_stream, filename):
     try:
         temp_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(filename))
         file_stream.save(temp_pdf_path)
-        poppler_path = r"C:\Users\manda\Downloads\Release-24.08.0-0\poppler-24.08.0\Library\bin"
+        poppler_path = r"your file path"
         images = convert_from_path(temp_pdf_path, poppler_path=poppler_path)
         from pptx import Presentation
         from pptx.util import Inches
