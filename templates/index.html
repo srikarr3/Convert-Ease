@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Convert Your File</h2>
+  <form action="{{ url_for('convert') }}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="conversion_type">Select Conversion Type:</label>
+      <select name="conversion_type" id="conversion_type">
+        <option value="jpg_to_pdf">JPG to PDF</option>
+        <option value="pdf_to_jpg">PDF to JPG</option>
+        <option value="ppt_to_pdf">PPT to PDF</option>
+        <option value="word_to_pdf">Word to PDF</option>
+        <option value="excel_to_pdf">Excel to PDF</option>
+        <option value="pdf_ocr">PDF OCR</option>
+        <option value="pdf_to_word">PDF to Word</option>
+        <option value="pdf_to_excel">PDF to Excel</option>
+        <option value="pdf_to_ppt">PDF to PPT</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="file">C{% extends "base.html" %}
+        {% block content %}
+        <div class="container">
+          <h2>Convert Your File</h2>
+          <form action="{{ url_for('convert') }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="conversion_type">Select Conversion Type:</label>
+              <select name="conversion_type" id="conversion_type">
+                <option value="jpg_to_pdf">JPG to PDF</option>
+                <option value="pdf_to_jpg">PDF to JPG</option>
+                <option value="ppt_to_pdf">PPT to PDF</option>
+                <option value="word_to_pdf">Word to PDF</option>
+                <option value="excel_to_pdf">Excel to PDF</option>
+                <option value="pdf_ocr">PDF OCR</option>
+                <option value="pdf_to_word">PDF to Word</option>
+                <option value="pdf_to_ppt">PDF to PPT</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="file">Choose File:</label>
+              <input type="file" name="file" id="file" required>
+            </div>
+            <button type="submit">Upload & Convert</button>
+          </form>
+        </div>
+        {% endblock %}
+        hoose File:</label>
+      <input type="file" name="file" id="file" required>
+    </div>
+    <button type="submit">Upload & Convert</button>
+  </form>
+</div>
+{% endblock %}
